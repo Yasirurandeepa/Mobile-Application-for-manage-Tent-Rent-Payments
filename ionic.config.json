@@ -1,0 +1,7 @@
+{
+  "name": "tent",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
