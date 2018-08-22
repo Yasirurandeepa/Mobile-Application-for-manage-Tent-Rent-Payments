@@ -1,0 +1,44 @@
+<!--
+  Generated template for the CustomersPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Customers</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let customer of customers">
+      <ion-item text-wrap  (click)="showItems(customer.key)">
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/blank.png">
+        </ion-avatar>
+        <h2>{{customer.name}}</h2>
+        <h3 style="color: dodgerblue;">Payment : Rs.{{customer.payment}}</h3>
+        <p>{{customer.customer_NIC}}</p>
+        <ion-note item-end style="font-size: 12px;">{{customer.date}}</ion-note>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="dark">
+          <ion-icon name="flame"></ion-icon>
+          Edit
+        </button>
+        <button ion-button color="danger" (click)="deleteItem(customer.key)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

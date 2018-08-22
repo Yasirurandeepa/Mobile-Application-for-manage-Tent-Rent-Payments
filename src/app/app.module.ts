@@ -1,19 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {CustomersPage} from "../pages/customers/customers";
+import {DatePipe} from "@angular/common";
+import {ShowItemsPage} from "../pages/show-items/show-items";
+
+import {Toast} from "@ionic-native/toast";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    CustomersPage,
+    ShowItemsPage
   ],
   imports: [
     BrowserModule,
@@ -23,12 +28,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    CustomersPage,
+    ShowItemsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    DatePipe,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Toast
   ]
 })
 export class AppModule {}

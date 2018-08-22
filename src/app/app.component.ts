@@ -3,8 +3,21 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
+
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+
+import * as firebase from 'firebase';
+import {CustomersPage} from "../pages/customers/customers";
+
+const config = {
+  apiKey: "AIzaSyACuO2YeVlQ2L4WG5sMYmyElrY7BwkSx3c",
+  authDomain: "tent-c17b7.firebaseapp.com",
+  databaseURL: "https://tent-c17b7.firebaseio.com",
+  projectId: "tent-c17b7",
+  storageBucket: "tent-c17b7.appspot.com",
+  messagingSenderId: "148681560503"
+};
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +35,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Customers', component: CustomersPage }
     ];
 
   }
@@ -34,6 +47,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    firebase.initializeApp(config);
   }
 
   openPage(page) {
