@@ -12,13 +12,15 @@ import {DatePipe} from "@angular/common";
 import {ShowItemsPage} from "../pages/show-items/show-items";
 
 import {Toast} from "@ionic-native/toast";
+import {PriceListPage} from "../pages/price-list/price-list";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     CustomersPage,
-    ShowItemsPage
+    ShowItemsPage,
+    PriceListPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import {Toast} from "@ionic-native/toast";
     MyApp,
     HomePage,
     CustomersPage,
-    ShowItemsPage
+    ShowItemsPage,
+    PriceListPage
   ],
   providers: [
     StatusBar,

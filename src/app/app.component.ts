@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 
 import * as firebase from 'firebase';
 import {CustomersPage} from "../pages/customers/customers";
+import {PriceListPage} from "../pages/price-list/price-list";
 
 const config = {
   apiKey: "AIzaSyACuO2YeVlQ2L4WG5sMYmyElrY7BwkSx3c",
@@ -35,7 +36,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Customers', component: CustomersPage }
+      { title: 'Customers', component: CustomersPage },
+      { title: 'Prices', component: PriceListPage}
     ];
 
   }

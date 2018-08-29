@@ -66,6 +66,42 @@ export class CustomersPage {
     alert.present();
   }
 
+  updateItem(customer_key: string, username: string, nic: string, phone_number: string){
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Update',
+      message: 'Do you want to update this item?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Update',
+          handler: () => {
+            const postData = {
+              name: username,
+              customer_NIC: nic,
+              number: phone_number
+            };
+
+            const personRef = firebase.database().ref().child("tents").child(customer_key);
+
+            personRef.once('value', function (snapshot) {
+              if(snapshot.val() === null){
+                console.log("Doesn't Exist");
+              }else{
+                personRef.update(postData);
+              }
+            });
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
 }
 
 export const snapshotToArray = snapshot => {

@@ -141,9 +141,18 @@
       <ion-col>
         <button ion-button type="submit">Calculate Amount</button>
       </ion-col>
-      <ion-col>
-        <ion-input [(ngModel)]="data.amount" name="amount" required=""></ion-input>
-      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-label>Total Price:</ion-label>
+      <ion-input [(ngModel)]="data.total" name="amount" required=""></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-label>Discount Price:</ion-label>
+      <ion-input [(ngModel)]="data.discount" name="discount" required=""></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-label>Final Price:</ion-label>
+      <ion-input [(ngModel)]="data.amount" name="final" required=""></ion-input>
     </ion-row>
   </form>
 
