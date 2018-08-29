@@ -21,7 +21,6 @@ export class ShowItemsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.item_key = this.navParams.get('key') as string;
-    console.log(this.item_key);
     firebase.database().ref('tents/').on('value', resp => {
       this.items = [];
       this.items = snapshotToArray(resp);

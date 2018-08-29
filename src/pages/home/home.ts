@@ -93,10 +93,10 @@ export class HomePage {
       if(this.discount==true){
         this.data.discount = this.total * 0.25;
         this.total = this.total - this.total * 0.25;
-        // this.toast.show('Congratulations!!! You have a 25% Discount', '5000', 'center').subscribe(
-        //   toast => {
-        //   }
-        // );
+        this.toast.show('Congratulations!!! You have a 25% Discount', '5000', 'center').subscribe(
+          toast => {
+          }
+        );
       }
 
       this.data.amount = this.total;

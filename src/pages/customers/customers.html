@@ -17,7 +17,15 @@
 
 <ion-content>
 
-  <ion-list>
+  <ion-item>
+    <ion-label>Select Customers</ion-label>
+    <ion-select [(ngModel)]="type" (ionChange)="filter(type);">
+      <ion-option value="all">All</ion-option>
+      <ion-option value="phone">Phone Number</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-list *ngIf="isAll">
     <ion-item-sliding *ngFor="let customer of customers">
       <ion-item text-wrap  (click)="showItems(customer.key)">
         <ion-avatar item-start>
@@ -39,6 +47,16 @@
         </button>
       </ion-item-options>
     </ion-item-sliding>
+  </ion-list>
+
+  <ion-list *ngIf="isNumbers">
+    <ion-item *ngFor="let entry of entries">
+      <ion-row>
+        <ion-icon name="person" padding-right></ion-icon>
+        <h3>{{entry[0]}} </h3>
+        <h3 style="color: dodgerblue;">: {{entry[1]}}</h3>
+      </ion-row>
+    </ion-item>
   </ion-list>
 
 </ion-content>

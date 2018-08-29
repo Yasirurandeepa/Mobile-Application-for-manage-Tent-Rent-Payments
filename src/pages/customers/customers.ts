@@ -19,17 +19,55 @@ import {ShowItemsPage} from "../show-items/show-items";
 export class CustomersPage {
 
   customers = [];
+  phone_numbers = [];
+  entries = [];
+  type: any;
+  isAll: boolean;
+  isNumbers: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
+    this.isAll = true;
+    this.isNumbers = false;
     firebase.database().ref('tents/').on('value', resp => {
       this.customers = [];
       this.customers = snapshotToArray(resp);
       this.customers.reverse();
     });
+    this.getPhoneNumbers();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CustomersPage');
+  }
+
+  filter(type: any){
+    if(type=='all'){
+      this.isAll = true;
+      this.isNumbers = false;
+    }
+    if(type=='phone'){
+      this.isAll = false;
+      this.isNumbers = true;
+    }
+  }
+
+  getPhoneNumbers(){
+    for(let customer of this.customers){
+      this.phone_numbers.push(customer.number);
+    }
+    // Count Phone Numbers
+    const counts = Object.create(null);
+    this.phone_numbers.forEach(btn => {
+      counts[btn] = counts[btn] ? counts[btn] + 1 : 1;
+    });
+
+    this.entries = Object.entries(counts);
+    this.entries.sort((a, b) => b[1] - a[1]);
+
+    // this.entries.forEach(row => {
+    //   console.log(row[0] + ": " + row[1]);
+    // });
+
   }
 
   showItems(customer_key: string){
